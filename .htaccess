@@ -1,0 +1,20 @@
+RewriteEngine On
+# Don't match real existing files so CSS, scripts, images aren't rewritten
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-s
+RewriteRule ^([^/]+)/([^/]+)/([^/]+) index.php?rt=$1&method=$2&param=$3 [L,QSA] 
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-s
+RewriteRule ^([^/]+)/([^/]+) index.php?rt=$1&method=$2 [L,QSA] 
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-s
+RewriteRule ^([^/]+) index.php?rt=$1 [L,QSA]
+
+AddType video/ogg .ogv
+AddType video/mp4 .mp4
+AddType video/webm .webm
+
